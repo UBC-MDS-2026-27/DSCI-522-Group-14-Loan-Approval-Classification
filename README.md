@@ -16,23 +16,25 @@ Run the following commands in a Git Bash terminal:
 
 - git clone git@github.com:UBC-MDS-2026-27/DSCI-522-Group-14-Loan-Approval-Classification.git
 - cd DSCI-522-Group-14-Loan-Approval-Classification
+
+### 2. Set up the Python environment
+From the root of the repository, run:
 - uv sync
 
+This creates the project's virutal environemtn and installs the dependencies specified in uv.lock.
 
-### 2. Restore the R environment
-From an R session started at the top level of the repository:
-
-- renv::restore()
-
-### 3. Build site
-From the terminal at the top level of the repository:
-
-- uv run quarto render
+### 3. Run the analysis
+TBC
 
 ## Dependencies (unsure)
+- Git
+- Python (managed through uv)
 - uv
 - Quarto
-- list them (e.g., uv, Quarto) or link to where they are listed (e.g., pyproject.toml).
+
+Python package dependencies are listed in pyproject.toml, with resolved versions recorded in uv.lock.
+
+**Disclaimer** Sections "How to Run the Analysis" and "Dependencies" were proofread and reviewed by ChatGPT where it provided suggestions for improving clarity and wording.
 
 ## Licenses (TBD)
 
