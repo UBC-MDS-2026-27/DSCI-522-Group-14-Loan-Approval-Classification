@@ -2,7 +2,7 @@
 
 Thanks for taking the time to contribute!
 
-Here are guidelines for contributing to our GitHub project. We welcome constructive feedback and suggestions for improvement.
+Here are the guidelines for contributing to our GitHub project. We welcome constructive feedback and suggestions for improvement.
 
 If you would like to propose changes to these guidelines, please [create an issue](https://github.com/UBC-MDS-2026-27/DSCI-522-Group-14-Loan-Approval-Classification/issues).
 
@@ -40,12 +40,53 @@ To suggest an improvement, please [create an issue](https://github.com/UBC-MDS-2
 
 Our team welcomes constructive criticism and appreciates suggestions that help improve the project.
 
+## For External Contributors Who Want to Make a Pull Request
+If you wish to open a pull request for any of the tasks above, please do the following:
+
+1. **Fork** the repository: <https://github.com/UBC-MDS-2026-27/DSCI-522-Group-14-Loan-Approval-Classification>
+
+2. **Clone** your fork:
+
+   ```bash
+   git clone git@github.com:your‑username/DSCI-522-Group-14-Loan-Approval-Classification.git
+   cd DSCI-522-Group-14-Loan-Approval-Classification
+   ```
+    Replace your-username with your GitHub username. Team members with repository access can clone the original repository instead.
+
+
+3. **Create a new branch** for your contribution:
+
+   ```bash
+   git checkout -b - bug/fix-suggestion
+   ```
+   Replace bug/fix-suggestion with a descriptive branch name.
+   
+4. **Make your changes** using your preferred code editor (e.g., Positron or VS Code). Test your changes where applicable.
+
+5. **Commit and push your changes**:
+
+   ```shell
+   git add .
+   git commit -m "bug fix: describe changes"
+   git push -u origin <name-of-your-branch>
+   ```
+   
+6. **Open a Pull Request** on GitHub:
+   
+   - Navigate to your fork or branch on GitHub.
+   - Click **Compare & Pull Request**.
+   - Set the destination to the original repository's main branch.
+   - Describe your changes and reference the relevant issue.
+   - Request a review from a project team member.
+
+    All pull requests must be reviewed and approved by a human team member before merging.
+
 ## AI Use Declaration
 ChatGPT (OpenAI) was used to discuss considerations involved in creating a CONTRIBUTING.md file and to proofread and polish the writing.
 
 ## REFERENCES
 This document was developed following the instructions and recommended workflows presented in the following resources:
-- [moo4feed](https://github.com/skysheng7/moo4feed) GitHub package by Kehan (Sky) Sheng, Borbala Foris, Daniel Weary, Marina von Keyserlingk
-- [Milestone 1 of DSCI 522: Data Science Workflows (Students)](https://github.com/skysheng7/moo4feed) by the UBC MDS Program
-- [Atom Contributing.md](https://github.com/atom/atom/blob/master/CONTRIBUTING.md) by ATOM on GitHub
-- [Contributing to dplyr](https://github.com/tidyverse/dplyr/blob/main/.github/CONTRIBUTING.md) by dplyr on GitHub
+- Atom. (n.d.). CONTRIBUTING.md [Contributor guidelines]. GitHub. [https://github.com/atom/atom/blob/master/CONTRIBUTING.md](https://github.com/atom/atom/blob/master/CONTRIBUTING.md)
+- Sheng, K., Foris, B., Weary, D., & von Keyserlingk, M. (n.d.). moo4feed [Computer software]. GitHub. [https://github.com/skysheng7/moo4feed](https://github.com/skysheng7/moo4feed)
+- tidyverse. (n.d.). Contributing to dplyr [Contributor guidelines]. GitHub. [https://github.com/tidyverse/dplyr/blob/main/.github/CONTRIBUTING.md](https://github.com/tidyverse/dplyr/blob/main/.github/CONTRIBUTING.md)
+- University of British Columbia, Master of Data Science Program. (n.d.). Milestone 1. DSCI 522: Data Science Workflows (Students). [https://ubc-mds.github.io/DSCI_522_dsci-workflows_students/assignments/milestone1.html](https://ubc-mds.github.io/DSCI_522_dsci-workflows_students/assignments/milestone1.html)
