@@ -14,12 +14,17 @@ This analysis aims to provide insight into lending patterns by identifying chara
 ### 1. Clone the repository
 Run the following commands in a Git Bash terminal:
 
-- git clone git@github.com:UBC-MDS-2026-27/DSCI-522-Group-14-Loan-Approval-Classification.git
-- cd DSCI-522-Group-14-Loan-Approval-Classification
+```bash
+git clone git@github.com:UBC-MDS-2026-27/DSCI-522-Group-14-Loan-Approval-Classification.git
+cd DSCI-522-Group-14-Loan-Approval-Classification
+```
 
 ### 2. Set up the Python environment
 From the root of the repository, run:
-- uv sync
+
+```bash
+uv sync
+```
 
 This creates the project's virutal environment and installs the dependencies specified in uv.lock.
 
@@ -68,5 +73,10 @@ Examples of prompts include:
 - What is the difference between predict() and predict_proba()?
 - Please proofread this paragraph for grammar and clarity.
 
-#### AI Declaration
+## AI Declaration
 All this README.md file has been proofread using ChatGPT. Specifically, the Summary, AI Use Statement, How to Run the Analysis, and Dependencies were proofread and reviewed by ChatGPT where it provided suggestions for improving clarity and wording.
+
+## REFERENCES
+This document was developed following the instructions and recommended workflows presented in the following resources:
+- Sheng, K., Foris, B., Weary, D., & von Keyserlingk, M. (n.d.). moo4feed [Computer software]. GitHub. [https://github.com/skysheng7/moo4feed](https://github.com/skysheng7/moo4feed)
+- University of British Columbia, Master of Data Science Program. (n.d.). Milestone 1. DSCI 522: Data Science Workflows (Students). [https://ubc-mds.github.io/DSCI_522_dsci-workflows_students/assignments/milestone1.html](https://ubc-mds.github.io/DSCI_522_dsci-workflows_students/assignments/milestone1.html)
