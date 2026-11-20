@@ -1,0 +1,125 @@
+---
+title: "Predicting Home Loan Approvals and Identifying High-Approval Customer Segments"
+author: "Reina Cheng, Edmund Yong, Joyce Lin"
+date: "2026/11/21"
+format: html
+---
+
+```{python}
+# importing library
+import pandas as pd
+from sklearn.model_selection import cross_val_predict, StratifiedKFold
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from statsmodels.stats.proportion import proportion_confint
+
+# preprocessing
+import numpy as np
+import pandas as pd
+from sklearn.pipeline import Pipeline, make_pipeline
+from sklearn.compose import ColumnTransformer
+from sklearn.impute import SimpleImputer
+from sklearn.preprocessing import OneHotEncoder, StandardScaler, FunctionTransformer
+
+# model
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import cross_validate, StratifiedKFold
+
+# install kagglehub
+import kagglehub
+import pandas as pd
+import os
+
+```
+
+# Summary
+
+#Hi Reina, can start writing here.
+
+# Introduction
+
+Homeownership is one of the largest and most significant financial commitments many people will make in their lives, and lending institutions must cautiously assess loan applications to determine whether applicants meet their lending criteria. Most applicants do not fully understand the factors influencing loan approval decisions beyond their own financial circumstances, and this analysis strives to provide insights into the home loan approval process.
+
+The project aims to predict whether a home loan application will be approved using a machine learning classification model. In additional, the report seeks to identify the three customer segments most likely to receive loan approval. 
+
+The [Finance Loan Approval Prediction Data](https://www.kaggle.com/datasets/krishnaraj30/finance-loan-approval-prediction-data/data) dataset, available on Kaggle, is used to investigate these questions. Each observation represents a loan application with variables including the number of dependents, education level, credit history, and property area. The target variable indicates whether the loan application was approved or rejected.
+
+We trained a Logistic Regression model to compare performance against a DummyClassifier baseline. Model performance is evaluated using accuracy, F1 score, and ROC AUC. We then examine the model’s predictions to identify three customer segments with the highest predicted likelihood of loan approval. Identifying these segments may help reveal patterns in loan approval decisions and provide insight into which applicant characteristics are associated with higher predicted approval probabilities.
+
+
+# Methods
+
+#Hi Reina, can start writing here.
+
+## 2 ##'s means this is a Sub-header if you need it
+
+#Hi Reina, can start writing here.
+
+
+```{python}
+# python block for you
+```
+
+Hi Reina,
+Some things you may need needed
+#| label: fig-example identifies a figure.
+
+
+
+#| fig-cap: gives it a caption, and Quarto handles numbering.
+
+
+
+#| echo: false hides the example plotting code in the rendered report while still showing its figure.
+
+
+
+# Results
+
+#Hi Reina, can start writing here.
+
+# Discussion
+
+```{python}
+# python block for you
+```
+
+```{python}
+# python block for you
+```
+
+
+```{python}
+
+```
+
+```{python}
+
+```
+
+```{python}
+
+```
+
+
+```{python}
+
+```
+
+```{python}
+
+```
+
+
+```{python}
+
+```
+
+```{python}
+
+```
+
+
+# References
+
+Krishnaraj30. (2023). *Finance loan approval prediction data* [Data set]. Kaggle. [https://www.kaggle.com/datasets/krishnaraj30/finance-loan-approval-prediction-data/data](https://www.kaggle.com/datasets/krishnaraj30/finance-loan-approval-prediction-data/data)
