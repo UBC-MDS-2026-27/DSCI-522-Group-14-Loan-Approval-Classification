@@ -24,10 +24,10 @@ To report bugs, please [create an issue](https://github.com/UBC-MDS-2026-27/DSCI
 - **Expected behaviour:** Explain what you expected to happen and why.
 - **(Optional) Solution:** Include a possible solution for review.
 
-The more details your report, the easier it will be for our team to investigate and resolve the issue.
+The more detailed your report, the easier it will be for our team to investigate and resolve the issue.
 
 ## Suggesting Improvements
-We welcome recommendations that can improve this project.
+We welcome recommendations that can improve this project!
 
 To suggest an improvement, please [create an issue](https://github.com/UBC-MDS-2026-27/DSCI-522-Group-14-Loan-Approval-Classification/issues)  with the following information:
 
