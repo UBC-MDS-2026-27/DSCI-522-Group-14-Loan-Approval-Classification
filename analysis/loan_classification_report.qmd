@@ -282,17 +282,17 @@ With more training data and additional research time, further studies could delv
 # References
 
 ::: {.hanging-indent}
-Krishnaraj30. (2023). *Finance loan approval prediction data* [Data set]. Kaggle. [https://www.kaggle.com/datasets/krishnaraj30/finance-loan-approval-prediction-data/data](https://www.kaggle.com/datasets/krishnaraj30/finance-loan-approval-prediction-data/data)
-:::
-::: {.hanging-indent}
 Atodaria, Zankhana & Pentar, Shubhangi. (2024). Credit Risk Analysis Using Logistic Regression Modeling.. 57. 
 :::
 ::: {.hanging-indent}
+BDC. (2025, March 7). What is customer segmentation?. Business Development Bank of Canada (BDC). [https://www.bdc.ca/en/articles-tools/entrepreneur-toolkit/templates-business-guides/glossary/segmentation](https://www.bdc.ca/en/articles-tools/entrepreneur-toolkit/templates-business-guides/glossary/segmentation)  
+:::
+::: {.hanging-indent}
+Krishnaraj30. (2023). *Finance loan approval prediction data* [Data set]. Kaggle. [https://www.kaggle.com/datasets/krishnaraj30/finance-loan-approval-prediction-data/data](https://www.kaggle.com/datasets/krishnaraj30/finance-loan-approval-prediction-data/data)
+:::
+::: {.hanging-indent}
+Udbhav, M., Kumar, R., Kumar, N., Kumar, R., Vijarania, Dr. M., & Gupta, S. (2022). Prediction of Home Loan Status Eligibility Using Machine Learning. [https://doi.org/10.2139/ssrn.4121038](https://doi.org/10.2139/ssrn.4121038) 
+:::
+::: {.hanging-indent}
 Zhang, Zehao. (2024). An Application of Logistic Regression in Bank Lending Prediction: A Machine Learning Perspective. Highlights in Business, Economics and Management. 45. 342-347. 10.54097/20qcm204. 
-:::
-::: {.hanging-indent}
-BDC. (2025, March 7). What is customer segmentation?. Business Development Bank of Canada (BDC). https://www.bdc.ca/en/articles-tools/entrepreneur-toolkit/templates-business-guides/glossary/segmentation  
-:::
-::: {.hanging-indent}
-Udbhav, M., Kumar, R., Kumar, N., Kumar, R., Vijarania, Dr. M., & Gupta, S. (2022). Prediction of Home Loan Status Eligibility Using Machine Learning. https://doi.org/10.2139/ssrn.4121038 
 :::
