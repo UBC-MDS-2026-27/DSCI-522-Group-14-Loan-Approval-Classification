@@ -78,7 +78,7 @@ Examples of prompts include:
 - Please proofread this paragraph for grammar and clarity.
 
 ## AI Declaration
-All this README.md file has been proofread using ChatGPT. Specifically, the Summary, AI Use Statement, How to Run the Analysis, and Dependencies were proofread and reviewed by ChatGPT where it provided suggestions for improving clarity and wording.
+This README.md file as well as the data analysis report has been proofread using ChatGPT. Specifically, the Summary, AI Use Statement, How to Run the Analysis, and Dependencies were proofread and reviewed by ChatGPT where it provided suggestions for improving clarity and wording.
 
 ## REFERENCES
 This document was developed following the instructions and recommended workflows presented in the following resources:
