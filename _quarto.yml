@@ -1,6 +1,5 @@
 project:
   # otherwise README.md renders too
-  output-dir: docs
   render:
     - analysis/*.qmd
 
