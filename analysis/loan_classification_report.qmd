@@ -7,30 +7,28 @@ jupyter: python3
 ---
 
 ```{python}
-# importing library
-import pandas as pd
-from sklearn.model_selection import cross_val_predict, StratifiedKFold
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LogisticRegression
-from statsmodels.stats.proportion import proportion_confint
-
-# preprocessing
+# data handling
 import numpy as np
 import pandas as pd
+
+# preprocessing
+from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline, make_pipeline
 from sklearn.compose import ColumnTransformer
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import OneHotEncoder, StandardScaler, FunctionTransformer
 
-# model
+
+# models and cross-validation
+from sklearn.dummy import DummyClassifier
 from sklearn.linear_model import LogisticRegression
-from sklearn.model_selection import cross_validate, StratifiedKFold
+from sklearn.model_selection import StratifiedKFold, cross_validate, cross_val_predict
 
-# install kagglehub
-import kagglehub
-import pandas as pd
-import os
-
+# evaluation and plots
+import matplotlib.pyplot as plt
+from sklearn.metrics import (accuracy_score, f1_score, roc_auc_score,
+                             classification_report, ConfusionMatrixDisplay,
+                             RocCurveDisplay)
 ```
 
 # Summary
@@ -50,34 +48,229 @@ We trained a Logistic Regression model to compare performance against a DummyCla
 
 # Methods
 
-#Hi Reina, can start writing here.
+## Data
 
-## 2 ##'s means this is a Sub-header if you need it
+The data set used in this project is the "Finance Loan Approval Prediction Data" set, uploaded to Kaggle by user krishnaraj30 and described as home loan approval prediction data. It can be found [here](https://www.kaggle.com/datasets/krishnaraj30/finance-loan-approval-prediction-data). The data is sourced from kaggle, uploaded by Analytics Vidhya and titled "Loan Prediction" practice problem. It's based on Dream Housing Finance, a company that offers home loans in urban, semiurban and rural areas and checks each customer's eligibility after they apply. Each row in the data set represents one loan application, including whether the loan was approved (`Loan_Status`: Y or N) and several applicant and loan characteristics: demographics (gender, marital status, number of dependents, education, self-employment), finances (applicant and co-applicant income, loan amount in thousands, loan term in months), whether the applicant's credit history meets the lender's guidelines (`Credit_History`), and the property area (urban, semiurban or rural). Approval decisions were made by the lender.
 
-#Hi Reina, can start writing here.
+We download the data with the code below using `kagglehub`. The download contains two files, `train.csv` (614 applications, 13 columns) and `test.csv` (367 applications). `test.csv` was the competition submission file, and its `Loan_Status` labels were withheld for scoring, so it cannot be used to evaluate a model. We therefore use only `train.csv` and split it into our own training (80%) and test (20%) sets, stratified by `Loan_Status`. `test.csv` is loaded but not used in this analysis.
 
-
+## reading data
 ```{python}
-# python block for you
+# reading data
+train = pd.read_csv("../data/raw/train.csv") 
+test = pd.read_csv("../data/raw/test.csv")
 ```
 
-Hi Reina,
-Some things you may need needed
-#| label: fig-example identifies a figure.
+# Analysis
+## EDA
+```{python}
+train.info()
+```
+```{python}
+train.describe()
+```
+```{python}
+train.head()
+```
+```{python}
+train.isna().sum()
+```
 
+In our EDA, we found that missing values are present in several columns, with the largest number in `Credit_History` (50 of 614 applications). We handled missing values as follows:
 
+- `Credit_History`: missing values were kept as their own category, `Unknown`, instead of being imputed. During exploratory analysis we found that the approval rate of applicants with missing credit history was close to that of applicants with good credit history, and very different from those with bad credit history, so the fact that the value is missing carries information.
+- `Self_Employed`, `Loan_Amount_Term` and `Dependents`: imputed with the most frequent value.
+- `LoanAmount`: imputed with the median, because its distribution is right skewed.
 
-#| fig-cap: gives it a caption, and Quarto handles numbering.
+We also made a few row-wise changes to the data. The `Dependents` value `3+` was recoded as `3` so that the column could be treated as numeric, and `Credit_History` was recoded from 1 and 0 to `Good` and `Bad`. We engineered two new features: total household income (`TotalIncome`, the sum of applicant and co-applicant income) and the ratio of the loan amount to total income (`LoanToIncome`). These steps only use values from the same row and do not learn anything from the data, so applying them to both the training and test sets does not cause data leakage.
 
+## Preprocessing
 
+```{python}
+# split train test
+# Split train test
+train_df, test_df = train_test_split(
+    train, test_size=0.2, stratify=train["Loan_Status"], random_state=123
+)
+```
+```{python}
+# row-wise cleaning and feature engineering
+def prepare(df):
+    df = df.copy()
+    # dependents 3+ becomes 3 (numeric)
+    df['Dependents'] = df['Dependents'].replace("3+", "3").astype(float)
 
-#| echo: false hides the example plotting code in the rendered report while still showing its figure.
+    # credit history: keep missingness as its own category
+    df["Credit_History"] = (df["Credit_History"]
+                              .map({1.0: "Good", 0.0: "Bad"})
+                              .fillna("Unknown"))
 
+    # engineered features
+    df["TotalIncome"] = df["ApplicantIncome"] + df["CoapplicantIncome"]
+    df["LoanToIncome"] = df["LoanAmount"] / df["TotalIncome"].replace(0, np.nan)
+    return df
 
+train_p = prepare(train_df)
+test_p = prepare(test_df)
+
+```
+
+```{python}
+# features and target
+y_train = (train_p["Loan_Status"] == "Y").astype(int)
+y_test = (test_p["Loan_Status"] == "Y").astype(int)
+
+skewed_cols = ["ApplicantIncome", "CoapplicantIncome", "TotalIncome",
+               "LoanAmount", "LoanToIncome"]
+other_num_cols = ["Loan_Amount_Term", "Dependents"]
+cat_cols = ["Education", "Self_Employed", "Property_Area", "Credit_History"]
+
+feature_cols = skewed_cols + other_num_cols + cat_cols
+X_train = train_p[feature_cols]
+X_test = test_p[feature_cols]
+```
+
+```{python}
+# Column Transformers (fit on train)
+skewed_pipe = make_pipeline(
+    SimpleImputer(strategy="median"),
+    FunctionTransformer(np.log1p, feature_names_out="one-to-one"),
+    StandardScaler(),
+)
+other_num_pipe = make_pipeline(
+    SimpleImputer(strategy="most_frequent"),
+    StandardScaler(),
+)
+cat_pipe = make_pipeline(
+    SimpleImputer(strategy="most_frequent"),
+    OneHotEncoder(handle_unknown="ignore", drop="if_binary", sparse_output=False),
+)
+
+preprocess = ColumnTransformer([
+    ("skewed", skewed_pipe, skewed_cols),
+    ("num", other_num_pipe, other_num_cols),
+    ("cat", cat_pipe, cat_cols),
+])
+```
+
+```{python}
+# quick sanity check: checking if the encoder works the way it was intended.
+X_train_sanity = preprocess.fit_transform(X_train)
+print(X_train_sanity.shape)
+print(preprocess.get_feature_names_out())
+print(np.isnan(X_train_sanity).sum())  # expected result: 0
+```
+
+## Model
+
+We used logistic regression to predict whether a loan application is approved. We picked it because it's simple and the coefficients are easy to explain. That matters in lending, where a bank needs to be able to explain why someone was rejected. As a baseline, we used a dummy classifier that always predicts the most common class (approved). We compared both models with stratified 5-fold cross-validation on the training set, using accuracy, F1 and ROC AUC. Then we fit the logistic regression on the full training set and scored it once on the test set. The analysis was done in Python (Van Rossum and Drake 2009) using requests (Reitz 2011), zipfile (Van Rossum and Drake 2009), NumPy (Harris et al. 2020), pandas (McKinney 2010), Matplotlib (Hunter 2007) and scikit-learn (Pedregosa et al. 2011).
+
+```{python}
+# baseline and logistic regression models, evaluated with stratified 5-fold CV
+cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=123)
+
+dummy = Pipeline([
+    ("preprocess", preprocess),
+    ("clf", DummyClassifier(strategy="most_frequent")),
+])
+
+model = Pipeline([
+    ("preprocess", preprocess),
+    ("clf", LogisticRegression(max_iter=1000)),
+])
+```
 
 # Results
 
-#Hi Reina, can start writing here.
+```{python}
+#| label: tbl-cv-scores
+#| tbl-cap: "Mean accuracy, F1 score and ROC AUC across the 5 cross-validation folds for the baseline and logistic regression models."
+#| echo: false
+cv_results = {}
+for name, pipe in [("Baseline (most frequent)", dummy), ("Logistic regression", model)]:
+    scores = cross_validate(pipe, X_train, y_train, cv=cv,
+                            scoring=["accuracy", "f1", "roc_auc"])
+    cv_results[name] = (pd.DataFrame(scores)[["test_accuracy", "test_f1", "test_roc_auc"]]
+                        .mean()
+                        .rename({"test_accuracy": "Accuracy",
+                                 "test_f1": "F1",
+                                 "test_roc_auc": "ROC AUC"}))
+
+pd.DataFrame(cv_results).T.round(3)
+```
+
+The baseline gets 0.686 accuracy and 0.814 F1 just by approving everyone, but its ROC AUC is 0.5, so it can't tell approvals and rejections apart at all (@tbl-cv-scores). Logistic regression improves accuracy to 0.809 and F1 to 0.874. The F1 gain is modest because the baseline's F1 is already inflated by predicting "approved" every time. The biggest improvement is in ROC AUC, which goes from 0.5 to 0.762.
+
+```{python}
+#| label: tbl-test-scores
+#| tbl-cap: "Accuracy, F1 score and ROC AUC of the final logistic regression model on the test set."
+#| echo: false
+model.fit(X_train, y_train)
+test_pred = model.predict(X_test)
+test_prob = model.predict_proba(X_test)[:, 1]
+
+pd.Series({
+    "Accuracy": accuracy_score(y_test, test_pred),
+    "F1": f1_score(y_test, test_pred),
+    "ROC AUC": roc_auc_score(y_test, test_prob),
+}).round(3).to_frame("Logistic regression (test set)").T
+```
+
+On the test set, the model gets 0.789 accuracy, 0.867 F1 and 0.711 ROC AUC (@tbl-test-scores). These are a bit lower than the CV scores, but close enough that the model doesn't look overfit. @fig-roc shows two ROC curves, one from CV and one from the test set. The test curve is more jagged because it's based on only 123 applicants (38 rejections), so each applicant moves the curve by a bigger step. For the same reason, the test AUC is less precise than the CV AUC.
+
+```{python}
+#| label: fig-roc
+#| fig-cap: "ROC curves for the logistic regression model from 5-fold cross-validation (training set) and from the test set. The dashed line is random guessing (AUC = 0.5)."
+#| echo: false
+y_score = cross_val_predict(model, X_train, y_train, cv=cv, method="predict_proba")[:, 1]
+
+fig, ax = plt.subplots(figsize=(5, 5))
+RocCurveDisplay.from_predictions(y_train, y_score, name="5-fold CV (train)", ax=ax)
+RocCurveDisplay.from_predictions(y_test, test_prob, name="Test set", ax=ax,
+                                 plot_chance_level=True)
+ax.set_xlabel("False positive rate")
+ax.set_ylabel("True positive rate")
+plt.title("ROC curve – logistic regression")
+plt.show()
+```
+
+The confusion matrix (@fig-confusion) shows the model's main weakness. It approved all 85 applicants who were actually approved, but it only caught 12 of the 38 rejections. The other 26 were approved when they should have been rejected. So the model leans heavily towards approval, and recall for rejections is only 0.32. For a lender, these two mistakes don't cost the same. Rejecting a good applicant means losing a customer. Approving a bad applicant can mean a loan that doesn't get paid back, which is usually much more expensive. Almost all of our model's mistakes are the expensive kind, so it shouldn't be making lending decisions on its own.
+
+```{python}
+#| label: fig-confusion
+#| fig-cap: "Confusion matrix for the logistic regression model on the test set. Rows are the true loan status and columns are the predicted status."
+#| echo: false
+ConfusionMatrixDisplay.from_predictions(y_test, test_pred,
+                                        display_labels=["Rejected", "Approved"])
+plt.title("Confusion matrix – logistic regression (test set)")
+plt.show()
+```
+
+To see which features drive approval, we looked at the logistic regression coefficients (@fig-coefs). Each bar shows how much a feature pushes the model towards approval (right) or rejection (left), in log-odds. Credit history is by far the main driver. Bad credit has the largest effect and pushes strongly towards rejection, while good and unknown credit both push towards approval. This matches what we saw in @fig-credit-history and backs up keeping `Unknown` as its own category. Semiurban property area and being a graduate also push towards approval, matching @fig-approval-area-edu, and a higher loan-to-income ratio pushes towards rejection, which makes sense. The income features should be read carefully, though. They're strongly related to each other (total income is just applicant + co-applicant income), so their effects get split between them. For example, the negative coefficient on total income doesn't mean higher income lowers your chance of approval.
+
+```{python}
+#| label: fig-coefs
+#| fig-cap: "Coefficients of the final logistic regression model. Positive values push towards approval and negative values push towards rejection."
+#| echo: false
+feature_names = model.named_steps["preprocess"].get_feature_names_out()
+coefs = pd.Series(model.named_steps["clf"].coef_[0], index=feature_names).sort_values()
+
+# make feature names nicer for plotting
+coefs.index = (coefs.index
+               .str.replace(r"^(skewed|num|cat)__", "", regex=True)
+               .str.replace("_", " "))
+
+coefs.plot.barh(figsize=(6, 5))
+plt.title("Logistic regression coefficients")
+plt.xlabel("Effect on log-odds of approval")
+plt.tight_layout()
+plt.show()
+```
+
+The model beats the baseline, but because it approves too many applicants who should be rejected, it isn't ready for real lending use. There are a few things we could try next. We could raise the decision threshold above the default 0.5, or set `class_weight="balanced"`, so the model rejects more often. This would cut down risky approvals, at the cost of turning away some good applicants. We could also tune the regularization strength `C`, which we left at its default. Finally, we could try models like random forest or gradient boosting, which can pick up interactions between features that logistic regression misses.
+
+There are also some limitations to keep in mind. The data set is small with 614 applications, and we don't know much about where it comes from, such as which lender, which country or which years. Lending rules and applicants vary a lot between lenders and over time, so the model may not work as well on other data. Our test results come from a single 80/20 split with only 123 applicants with 38 rejections, so they're uncertain, and a different split could give somewhat different numbers. Lastly, even though we dropped gender and marital status, other features like income or property area could still be correlated with them. Anyone using a model like this would need to check that it treats different groups fairly.
+
 
 # Discussion
 
