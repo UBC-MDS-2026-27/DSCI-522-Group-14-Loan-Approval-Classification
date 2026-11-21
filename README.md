@@ -4,11 +4,7 @@
 **Link to the report:** [DSCI-522-Group-14-Loan-Approval-Classification](https://github.com/UBC-MDS-2026-27/DSCI-522-Group-14-Loan-Approval-Classification)
 
 ## Summary (for review)
-The goal of this data analysis project is to predict loan approval outcomes and identify the top three customer segments most likely to be approved for a home loan.
-
-Using the train.csv dataset from the [Finance Loan approval Prediction Data](https://www.kaggle.com/datasets/krishnaraj30/finance-loan-approval-prediction-data?select=train.csv) on Kaggle, we fit a classification model to predict loan approval outcomes then analyze which customer groups have the highest predicted approval rates.
-
-This analysis aims to provide insight into lending patterns by identifying characteristics that may be associated with loan eligibility.
+The goal of this data analysis project is to predict home loan approval outcomes using applicant information and evaluate the effectiveness of a machine learning classification model. Using the train.csv dataset from the [Finance Loan Approval Prediction Data]( https://www.kaggle.com/datasets/krishnaraj30/finance-loan-approval-prediction-data?select=train.csv) on Kaggle, we fit a logistic regression model and compare its performance against a majority-class baseline using accuracy, F1 score, and ROC AUC. Our findings show that logistic regression outperforms the baseline, but despite its relatively high overall accuracy, the model performs poorly at identifying rejected applications. This analysis highlights the importance of evaluating classification models beyond overall accuracy, particularly when working with imbalanced datasets, and suggests that further improvements are needed before such a model could be considered for real-world lending decisions.
 
 ## How to Run the Analysis
 ### 1. Clone the repository
