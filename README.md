@@ -24,8 +24,14 @@ uv sync
 
 This creates the project's virutal environment and installs the dependencies specified in uv.lock.
 
-### 3. Access the dataset
-The datasets train.csv and test.csv are already included in the repository under data/raw/ and do not require a separate download.
+### 3. Download the dataset
+The following command downloads and unzips the dataset into `data/raw/`.
+
+```bash
+curl -L -o data/finance-loan-approval-prediction-data.zip https://www.kaggle.com/api/v1/datasets/download/krishnaraj30/finance-loan-approval-prediction-data && \
+unzip -o data/finance-loan-approval-prediction-data.zip -d data/raw/ && \
+rm data/finance-loan-approval-prediction-data.zip
+```
 
 The original dataset is available on Kaggle: [Finance Loan Approval Prediction Data](https://www.kaggle.com/datasets/krishnaraj30/finance-loan-approval-prediction-data).
 
