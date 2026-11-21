@@ -1,5 +1,5 @@
 ---
-title: "Predicting Home Loan Approvals and Identifying High-Approval Customer Segments"
+title: "Predicting Home Loan Approvals Given An Applicant Finanical And Application Details"
 author: "Reina Cheng, Edmund Yong, Joyce Lin"
 date: "2026/11/21"
 format: html
@@ -34,17 +34,17 @@ import os
 
 # Summary
 
-#Hi Reina, can start writing here.
+This project investigates whether a logistic regression classification model can predict home loan approval outcomes using applicant and financial features from the [Finance Loan Approval Prediction Data](https://www.kaggle.com/datasets/krishnaraj30/finance-loan-approval-prediction-data/data) available on Kaggle. We evaluated the model against a majority-class baseline using accuracy, F1, and Area Under the Receiver Operating Characteristic Curve (ROC AUC). The Logistic Regression model outperformed the baseline, achieving a test accuracy of 78.9% accuracy, and ROC AUC of 0.711. However, despite its relatively high overall accuracy, the model only correctly identified 12 of 38 rejected applications; this highlights the importance of evaluating classification models beyond accuracy, particularly when working with imbalanced datasets. Given the dataset's small size, limited information, and the model's poor performance in identifying rejections, the results should not be generalized to real-world lending decisions without further tuning and training.
 
 # Introduction
 
 Homeownership is one of the largest and most significant financial commitments many people will make in their lives, and lending institutions must cautiously assess loan applications to determine whether applicants meet their lending criteria. Most applicants do not fully understand the factors influencing loan approval decisions beyond their own financial circumstances, and this analysis strives to provide insights into the home loan approval process.
 
-The project aims to predict whether a home loan application will be approved using a machine learning classification model. In additional, the report seeks to identify the three customer segments most likely to receive loan approval. 
+The project investigates whether a machine learning classification model can accurately predict home loan approval outcomes using applicant and loan characteristics, and then identify the features that drive approval or rejection. We evaluate if a logistic regression model performs better than a majority-class baseline and examine its effectiveness in identifying both approved and rejected applications. Understanding these differences is important because overall accuracy score may not fully reflect a model's ability to distinguish between the two outcomes for imbalanced datasets.
 
-The [Finance Loan Approval Prediction Data](https://www.kaggle.com/datasets/krishnaraj30/finance-loan-approval-prediction-data/data) dataset, available on Kaggle, is used to investigate these questions. Each observation represents a loan application with variables including the number of dependents, education level, credit history, and property area. The target variable indicates whether the loan application was approved or rejected.
+The [Finance Loan Approval Prediction Data](https://www.kaggle.com/datasets/krishnaraj30/finance-loan-approval-prediction-data/data) dataset, available on Kaggle, is used to investigate these questions. Each of the 613 observations represents a loan application with variables that include details such as the number of dependents, education level, credit history, income, and property area. The target variable indicates whether the loan application was approved or rejected.
 
-We trained a Logistic Regression model to compare performance against a DummyClassifier baseline. Model performance is evaluated using accuracy, F1 score, and ROC AUC. We then examine the model’s predictions to identify three customer segments with the highest predicted likelihood of loan approval. Identifying these segments may help reveal patterns in loan approval decisions and provide insight into which applicant characteristics are associated with higher predicted approval probabilities.
+We trained a Logistic Regression model to compare its performance against a baseline model that always predicts the majority class. Model performance was evaluated using accuracy, F1 score, and ROC AUC along with a confusion matrix to examine classification errors. This approach allows us to assess whether the model improves upon the baseline as well as whether its predictions are reliable.
 
 
 # Methods
