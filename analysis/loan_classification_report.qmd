@@ -2,7 +2,7 @@
 title: "Predicting Home Loan Approvals Given An Applicant Financial And Application Details"
 author: "Reina Cheng, Edmund Yong, Joyce Lin"
 date: "2026/11/21"
-format: typst
+format: html
 jupyter: python3
 ---
 
@@ -112,6 +112,9 @@ def prepare(df):
 
 train_p = prepare(train_df)
 test_p = prepare(test_df)
+
+train_p.to_csv('../data/processed/train_p.csv', index=False)
+test_p.to_csv('../data/processed/test_p.csv', index=False)
 
 ```
 
