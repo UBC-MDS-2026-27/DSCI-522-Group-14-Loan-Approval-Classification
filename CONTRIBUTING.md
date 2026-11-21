@@ -84,7 +84,7 @@ If you wish to open a pull request for any of the tasks above, please do the fol
 ## AI Use Declaration
 ChatGPT (OpenAI) was used to discuss considerations involved in creating a CONTRIBUTING.md file and to proofread and polish the writing.
 
-## REFERENCES
+## References
 This document was developed following the instructions and recommended workflows presented in the following resources:
 - Atom. (n.d.). CONTRIBUTING.md [Contributor guidelines]. GitHub. [https://github.com/atom/atom/blob/master/CONTRIBUTING.md](https://github.com/atom/atom/blob/master/CONTRIBUTING.md)
 - Sheng, K., Foris, B., Weary, D., & von Keyserlingk, M. (n.d.). moo4feed [Computer software]. GitHub. [https://github.com/skysheng7/moo4feed](https://github.com/skysheng7/moo4feed)

@@ -1,10 +1,15 @@
-# Group 14 Milestone 1: Home Loan Approval Classification
+# Group 14 Milestone 1: Predicting Home Loan Approvals Given An Applicant Financial And Application Details
 **Authors**: Reina Cheng Hwai, Edmund Yong, and Joyce Lin
 
 **Link to the report:** [DSCI-522-Group-14-Loan-Approval-Classification](https://github.com/UBC-MDS-2026-27/DSCI-522-Group-14-Loan-Approval-Classification)
 
 ## Summary
 The goal of this data analysis project is to predict home loan approval outcomes using applicant information and evaluate the effectiveness of a machine learning classification model. Using the train.csv dataset from the [Finance Loan Approval Prediction Data]( https://www.kaggle.com/datasets/krishnaraj30/finance-loan-approval-prediction-data?select=train.csv) on Kaggle, we fit a logistic regression model and compare its performance against a majority-class baseline using accuracy, F1 score, and ROC AUC. Our findings show that logistic regression outperforms the baseline, but despite its relatively high overall accuracy, the model performs poorly at identifying rejected applications. This analysis highlights the importance of evaluating classification models beyond overall accuracy, particularly when working with imbalanced datasets, and suggests that further improvements are needed before such a model could be considered for real-world lending decisions.
+
+## Report
+
+The final report can be found
+[here](https://ubc-mds-2026-27.github.io/DSCI-522-Group-14-Loan-Approval-Classification/analysis/loan_classification_report.html).
 
 ## How to Run the Analysis
 ### 1. Clone the repository
@@ -24,8 +29,14 @@ uv sync
 
 This creates the project's virutal environment and installs the dependencies specified in uv.lock.
 
-### 3. Access the dataset
-The datasets train.csv and test.csv are already included in the repository under data/raw/ and do not require a separate download.
+### 3. Download the dataset
+The following command downloads and unzips the dataset into `data/raw/`.
+
+```bash
+curl -L -o data/finance-loan-approval-prediction-data.zip https://www.kaggle.com/api/v1/datasets/download/krishnaraj30/finance-loan-approval-prediction-data && \
+unzip -o data/finance-loan-approval-prediction-data.zip -d data/raw/ && \
+rm data/finance-loan-approval-prediction-data.zip
+```
 
 The original dataset is available on Kaggle: [Finance Loan Approval Prediction Data](https://www.kaggle.com/datasets/krishnaraj30/finance-loan-approval-prediction-data).
 
@@ -64,7 +75,7 @@ Python package dependencies are listed in pyproject.toml, with resolved versions
 
 
 ## AI Use Statement
-Generative AI tools, such as ChatGPT and Claude, were used in this project. AI usage is disclosed in all sections that had assistance. Examples of AI usage include debugging code, answering basic programming questions, asking general concepts, and  proofreading written work.
+Generative AI tools, such as ChatGPT and Claude, were used in this project. AI usage is disclosed in all documents that had assistance. Examples of AI usage include debugging code, answering basic programming questions, asking general concepts, and  proofreading written work.
 
 Examples of prompts include:
 - Help me understand why this Python code produced an error?
@@ -72,7 +83,7 @@ Examples of prompts include:
 - Please proofread this paragraph for grammar and clarity.
 
 ## AI Declaration
-All this README.md file has been proofread using ChatGPT. Specifically, the Summary, AI Use Statement, How to Run the Analysis, and Dependencies were proofread and reviewed by ChatGPT where it provided suggestions for improving clarity and wording.
+This README.md file has been proofread using ChatGPT. Specifically, the Summary, AI Use Statement, How to Run the Analysis, and Dependencies were proofread and reviewed by ChatGPT where it provided suggestions for improving clarity and wording.
 
 ## REFERENCES
 This document was developed following the instructions and recommended workflows presented in the following resources:
