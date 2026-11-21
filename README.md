@@ -1,4 +1,4 @@
-# Group 14 Milestone 1: Home Loan Approval Classification
+# Group 14 Milestone 1: Predicting Home Loan Approvals Given An Applicant Financial And Application Details
 **Authors**: Reina Cheng Hwai, Edmund Yong, and Joyce Lin
 
 **Link to the report:** [DSCI-522-Group-14-Loan-Approval-Classification](https://github.com/UBC-MDS-2026-27/DSCI-522-Group-14-Loan-Approval-Classification)
@@ -75,7 +75,7 @@ Python package dependencies are listed in pyproject.toml, with resolved versions
 
 
 ## AI Use Statement
-Generative AI tools, such as ChatGPT and Claude, were used in this project. AI usage is disclosed in all sections that had assistance. Examples of AI usage include debugging code, answering basic programming questions, asking general concepts, and  proofreading written work.
+Generative AI tools, such as ChatGPT and Claude, were used in this project. AI usage is disclosed in all documents that had assistance. Examples of AI usage include debugging code, answering basic programming questions, asking general concepts, and  proofreading written work.
 
 Examples of prompts include:
 - Help me understand why this Python code produced an error?
@@ -83,7 +83,7 @@ Examples of prompts include:
 - Please proofread this paragraph for grammar and clarity.
 
 ## AI Declaration
-This README.md file as well as the data analysis report has been proofread using ChatGPT. Specifically, the Summary, AI Use Statement, How to Run the Analysis, and Dependencies were proofread and reviewed by ChatGPT where it provided suggestions for improving clarity and wording.
+This README.md file has been proofread using ChatGPT. Specifically, the Summary, AI Use Statement, How to Run the Analysis, and Dependencies were proofread and reviewed by ChatGPT where it provided suggestions for improving clarity and wording.
 
 ## REFERENCES
 This document was developed following the instructions and recommended workflows presented in the following resources:

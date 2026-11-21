@@ -54,7 +54,7 @@ The data set used in this project is the "Finance Loan Approval Prediction Data"
 
 The dataset contains two files, `train.csv` (614 applications, 13 columns) and `test.csv` (367 applications). `test.csv` was the competition submission file, and its `Loan_Status` labels were withheld for scoring, so it cannot be used to evaluate a model. We therefore use only `train.csv` and split it into our own training (80%) and test (20%) sets, stratified by `Loan_Status`. `test.csv` is loaded but not used in this analysis.
 
-## reading data
+## Reading Data
 ```{python}
 # reading data
 train = pd.read_csv("../data/raw/train.csv") 
@@ -62,7 +62,7 @@ test = pd.read_csv("../data/raw/test.csv")
 ```
 
 # Analysis
-## EDA
+## Exploratory Data Analysis (EDA)
 ```{python}
 train.info()
 ```
@@ -166,7 +166,7 @@ print(np.isnan(X_train_sanity).sum())  # expected result: 0
 
 ## Model
 
-We used logistic regression to predict whether a loan application is approved. We picked it because it's simple and the coefficients are easy to explain and is widely used for credit scoring and bank lending prediction (Atodaria & Pentar, 2024; Zhang, 2024). That matters in lending, where a bank needs to be able to explain why someone was rejected. As a baseline, we used a dummy classifier that always predicts the most common class (approved). We compared both models with stratified 5-fold cross-validation on the training set, using accuracy, F1 and ROC AUC. Then we fit the logistic regression on the full training set and scored it once on the test set. The analysis was done in Python (Van Rossum and Drake 2009) using requests (Reitz 2011), zipfile (Van Rossum and Drake 2009), NumPy (Harris et al. 2020), pandas (McKinney 2010), Matplotlib (Hunter 2007) and scikit-learn (Pedregosa et al. 2011).
+We used logistic regression to predict whether a loan application is approved. We picked it because it's simple and the coefficients are easy to explain and is widely used for credit scoring and bank lending prediction (Atodaria & Pentar, 2024; Zhang, 2024). That matters in lending, where a bank needs to be able to explain why someone was rejected. As a baseline, we used a dummy classifier that always predicts the most common class (approved). We compared both models with stratified 5-fold cross-validation (CV) on the training set, using accuracy, F1 and ROC AUC. Then we fit the logistic regression on the full training set and scored it once on the test set. The analysis was done in Python (Van Rossum and Drake 2009) using requests (Reitz 2011), zipfile (Van Rossum and Drake 2009), NumPy (Harris et al. 2020), pandas (McKinney 2010), Matplotlib (Hunter 2007) and scikit-learn (Pedregosa et al. 2011).
 
 ```{python}
 # baseline and logistic regression models, evaluated with stratified 5-fold CV
@@ -249,7 +249,7 @@ plt.title("Confusion matrix – logistic regression (test set)")
 plt.show()
 ```
 
-To see which features drive approval, we looked at the logistic regression coefficients (@fig-coefs). Each bar shows how much a feature pushes the model towards approval (right) or rejection (left), in log-odds. Credit history is by far the main driver. Bad credit has the largest effect and pushes strongly towards rejection, while good and unknown credit both push towards approval. This matches what we saw in @fig-credit-history and backs up keeping `Unknown` as its own category. Semiurban property area and being a graduate also push towards approval, matching @fig-approval-area-edu, and a higher loan-to-income ratio pushes towards rejection, which makes sense. The income features should be read carefully, though. They're strongly related to each other (total income is just applicant + co-applicant income), so their effects get split between them. For example, the negative coefficient on total income doesn't mean higher income lowers your chance of approval.
+To see which features drive approval, we looked at the logistic regression coefficients (@fig-coefs). Each bar shows how much a feature pushes the model towards approval (right) or rejection (left), in log-odds. Credit history is by far the main driver. Bad credit has the largest effect and pushes strongly towards rejection, while good and unknown credit both push towards approval. This backs up keeping `Unknown` as its own category. Semiurban property area and being a graduate also push towards approval, and a higher loan-to-income ratio pushes towards rejection, which makes sense. The income features should be read carefully, though. They're strongly related to each other (total income is just applicant + co-applicant income), so their effects get split between them. For example, the negative coefficient on total income doesn't mean higher income lowers your chance of approval.
 
 ```{python}
 #| label: fig-coefs
@@ -278,6 +278,10 @@ Based on the results of the data analysis, the trained model beats the baseline,
 There are also some limitations to keep in mind. The data set is small with 614 applications, and we don't know much about where it comes from, such as which lender, which country or which years. Lending rules and applicants vary a lot between lenders and over time, so the model may not work as well on other data. Our test results come from a single 80/20 split with only 123 applicants with 38 rejections, so they're uncertain, and a different split could give somewhat different numbers. Lastly, even though we dropped gender and marital status, other features like income or property area could still be correlated with them. Anyone using a model like this would need to check that it treats different groups fairly.
 
 With more training data and additional research time, further studies could delve deeper into the data and look into customer segmentation, which involves splitting customers into groups based on similar traits (Business Development Bank of Canada, 2025), to determine which segments have the highest approval ratings. Another potential path for future research could be to gather larger, more detailed datasets with additional features such as interest rate, current assets, and current debt to determine whether they can further improve the model's performance.
+
+## AI DISCLAIMER
+This document has been proofread using ChatGPT where it provided suggestions for improving clarity and wording.
+
 
 # References
 
