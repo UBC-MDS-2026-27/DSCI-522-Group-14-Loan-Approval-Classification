@@ -166,7 +166,7 @@ print(np.isnan(X_train_sanity).sum())  # expected result: 0
 
 ## Model
 
-We used logistic regression to predict whether a loan application is approved. We picked it because it's simple and the coefficients are easy to explain. That matters in lending, where a bank needs to be able to explain why someone was rejected. As a baseline, we used a dummy classifier that always predicts the most common class (approved). We compared both models with stratified 5-fold cross-validation on the training set, using accuracy, F1 and ROC AUC. Then we fit the logistic regression on the full training set and scored it once on the test set. The analysis was done in Python (Van Rossum and Drake 2009) using requests (Reitz 2011), zipfile (Van Rossum and Drake 2009), NumPy (Harris et al. 2020), pandas (McKinney 2010), Matplotlib (Hunter 2007) and scikit-learn (Pedregosa et al. 2011).
+We used logistic regression to predict whether a loan application is approved. We picked it because it's simple and the coefficients are easy to explain and is widely used for credit scoring and bank lending prediction (Atodaria & Pentar, 2024; Zhang, 2024). That matters in lending, where a bank needs to be able to explain why someone was rejected. As a baseline, we used a dummy classifier that always predicts the most common class (approved). We compared both models with stratified 5-fold cross-validation on the training set, using accuracy, F1 and ROC AUC. Then we fit the logistic regression on the full training set and scored it once on the test set. The analysis was done in Python (Van Rossum and Drake 2009) using requests (Reitz 2011), zipfile (Van Rossum and Drake 2009), NumPy (Harris et al. 2020), pandas (McKinney 2010), Matplotlib (Hunter 2007) and scikit-learn (Pedregosa et al. 2011).
 
 ```{python}
 # baseline and logistic regression models, evaluated with stratified 5-fold CV
@@ -321,4 +321,15 @@ train.head()
 
 # References
 
+::: {.hanging-indent}
 Krishnaraj30. (2023). *Finance loan approval prediction data* [Data set]. Kaggle. [https://www.kaggle.com/datasets/krishnaraj30/finance-loan-approval-prediction-data/data](https://www.kaggle.com/datasets/krishnaraj30/finance-loan-approval-prediction-data/data)
+:::
+::: {.hanging-indent}
+Atodaria, Zankhana & Pentar, Shubhangi. (2024). Credit Risk Analysis Using Logistic Regression Modeling.. 57. 
+:::
+::: {.hanging-indent}
+Zhang, Zehao. (2024). An Application of Logistic Regression in Bank Lending Prediction: A Machine Learning Perspective. Highlights in Business, Economics and Management. 45. 342-347. 10.54097/20qcm204. 
+:::
+::: {.hanging-indent}
+BDC. (2025, March 7). What is customer segmentation?. Business Development Bank of Canada (BDC). https://www.bdc.ca/en/articles-tools/entrepreneur-toolkit/templates-business-guides/glossary/segmentation  
+:::
