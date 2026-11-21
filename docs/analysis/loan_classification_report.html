@@ -2280,7 +2280,7 @@ var requirejs,require,define;(function(global,setTimeout){var req,s,head,baseEle
 </header>
 
 
-<div id="18e2a1de" class="cell" data-execution_count="1">
+<div id="c8535330" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># data handling</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -2324,7 +2324,7 @@ var requirejs,require,define;(function(global,setTimeout){var req,s,head,baseEle
 </section>
 <section id="reading-data" class="level2">
 <h2 class="anchored" data-anchor-id="reading-data">reading data</h2>
-<div id="f65ed841" class="cell" data-execution_count="2">
+<div id="e781610a" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># reading data</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>train <span class="op">=</span> pd.read_csv(<span class="st">&quot;../data/raw/train.csv&quot;</span>) </span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>test <span class="op">=</span> pd.read_csv(<span class="st">&quot;../data/raw/test.csv&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -2335,7 +2335,7 @@ var requirejs,require,define;(function(global,setTimeout){var req,s,head,baseEle
 <h1>Analysis</h1>
 <section id="eda" class="level2">
 <h2 class="anchored" data-anchor-id="eda">EDA</h2>
-<div id="a1739875" class="cell" data-execution_count="3">
+<div id="b734dd51" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>train.info()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class &#39;pandas.DataFrame&#39;&gt;
@@ -2360,9 +2360,9 @@ dtypes: float64(4), int64(1), str(8)
 memory usage: 62.5 KB</code></pre>
 </div>
 </div>
-<div id="8099027e" class="cell" data-execution_count="4">
+<div id="2acd9dc3" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>train.describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="23">
+<div class="cell-output cell-output-display" data-execution_count="4">
 <div>
 
 
@@ -2448,9 +2448,9 @@ memory usage: 62.5 KB</code></pre>
 </div>
 </div>
 </div>
-<div id="13013396" class="cell" data-execution_count="5">
+<div id="5a0e2c92" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>train.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="24">
+<div class="cell-output cell-output-display" data-execution_count="5">
 <div>
 
 
@@ -2560,9 +2560,9 @@ memory usage: 62.5 KB</code></pre>
 </div>
 </div>
 </div>
-<div id="284a77d2" class="cell" data-execution_count="6">
+<div id="13f57a13" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>train.isna().<span class="bu">sum</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="25">
+<div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>Loan_ID               0
 Gender               13
 Married               3
@@ -2589,14 +2589,14 @@ dtype: int64</code></pre>
 </section>
 <section id="preprocessing" class="level2">
 <h2 class="anchored" data-anchor-id="preprocessing">Preprocessing</h2>
-<div id="25aca180" class="cell" data-execution_count="7">
+<div id="d2fa26b9" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># split train test</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Split train test</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>train_df, test_df <span class="op">=</span> train_test_split(</span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    train, test_size<span class="op">=</span><span class="fl">0.2</span>, stratify<span class="op">=</span>train[<span class="st">&quot;Loan_Status&quot;</span>], random_state<span class="op">=</span><span class="dv">123</span></span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="979a3804" class="cell" data-execution_count="8">
+<div id="df460a17" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># row-wise cleaning and feature engineering</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> prepare(df):</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> df.copy()</span>
@@ -2619,7 +2619,7 @@ dtype: int64</code></pre>
 <span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>train_p.to_csv(<span class="st">&#39;../data/processed/train_p.csv&#39;</span>, index<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>test_p.to_csv(<span class="st">&#39;../data/processed/test_p.csv&#39;</span>, index<span class="op">=</span><span class="va">False</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="830191f0" class="cell" data-execution_count="9">
+<div id="06f723b2" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># features and target</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>y_train <span class="op">=</span> (train_p[<span class="st">&quot;Loan_Status&quot;</span>] <span class="op">==</span> <span class="st">&quot;Y&quot;</span>).astype(<span class="bu">int</span>)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>y_test <span class="op">=</span> (test_p[<span class="st">&quot;Loan_Status&quot;</span>] <span class="op">==</span> <span class="st">&quot;Y&quot;</span>).astype(<span class="bu">int</span>)</span>
@@ -2633,7 +2633,7 @@ dtype: int64</code></pre>
 <span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>X_train <span class="op">=</span> train_p[feature_cols]</span>
 <span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>X_test <span class="op">=</span> test_p[feature_cols]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="622e47c6" class="cell" data-execution_count="10">
+<div id="589e06fd" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Column Transformers (fit on train)</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>skewed_pipe <span class="op">=</span> make_pipeline(</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    SimpleImputer(strategy<span class="op">=</span><span class="st">&quot;median&quot;</span>),</span>
@@ -2655,7 +2655,7 @@ dtype: int64</code></pre>
 <span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>    (<span class="st">&quot;cat&quot;</span>, cat_pipe, cat_cols),</span>
 <span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="c5ba74db" class="cell" data-execution_count="11">
+<div id="8e2cffc9" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># quick sanity check: checking if the encoder works the way it was intended.</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>X_train_sanity <span class="op">=</span> preprocess.fit_transform(X_train)</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(X_train_sanity.shape)</span>
@@ -2677,7 +2677,7 @@ dtype: int64</code></pre>
 <section id="model" class="level2">
 <h2 class="anchored" data-anchor-id="model">Model</h2>
 <p>We used logistic regression to predict whether a loan application is approved. We picked it because it’s simple and the coefficients are easy to explain and is widely used for credit scoring and bank lending prediction (Atodaria &amp; Pentar, 2024; Zhang, 2024). That matters in lending, where a bank needs to be able to explain why someone was rejected. As a baseline, we used a dummy classifier that always predicts the most common class (approved). We compared both models with stratified 5-fold cross-validation on the training set, using accuracy, F1 and ROC AUC. Then we fit the logistic regression on the full training set and scored it once on the test set. The analysis was done in Python (Van Rossum and Drake 2009) using requests (Reitz 2011), zipfile (Van Rossum and Drake 2009), NumPy (Harris et al. 2020), pandas (McKinney 2010), Matplotlib (Hunter 2007) and scikit-learn (Pedregosa et al. 2011).</p>
-<div id="ad18ac22" class="cell" data-execution_count="12">
+<div id="0d044e73" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># baseline and logistic regression models, evaluated with stratified 5-fold CV</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>cv <span class="op">=</span> StratifiedKFold(n_splits<span class="op">=</span><span class="dv">5</span>, shuffle<span class="op">=</span><span class="va">True</span>, random_state<span class="op">=</span><span class="dv">123</span>)</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -2702,7 +2702,7 @@ dtype: int64</code></pre>
 Table 1: Mean accuracy, F1 score and ROC AUC across the 5 cross-validation folds for the baseline and logistic regression models.
 </figcaption>
 <div aria-describedby="tbl-cv-scores-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display" data-execution_count="32">
+<div class="cell-output cell-output-display" data-execution_count="13">
 <div>
 
 
@@ -2745,7 +2745,7 @@ Table 1: Mean accuracy, F1 score and ROC AUC across the 5 cross-validation fold
 Table 2: Accuracy, F1 score and ROC AUC of the final logistic regression model on the test set.
 </figcaption>
 <div aria-describedby="tbl-test-scores-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display" data-execution_count="33">
+<div class="cell-output cell-output-display" data-execution_count="14">
 <div>
 
 
@@ -2819,128 +2819,12 @@ Figure 3: Coefficients of the final logistic regression model. Positive values 
 </div>
 </div>
 </div>
-<p>The model beats the baseline, but because it approves too many applicants who should be rejected, it isn’t ready for real lending use. There are a few things we could try next. We could raise the decision threshold above the default 0.5, or set <code>class_weight=&quot;balanced&quot;</code>, so the model rejects more often. This would cut down risky approvals, at the cost of turning away some good applicants. We could also tune the regularization strength <code>C</code>, which we left at its default. Finally, we could try models like random forest or gradient boosting, which can pick up interactions between features that logistic regression misses.</p>
-<p>There are also some limitations to keep in mind. The data set is small with 614 applications, and we don’t know much about where it comes from, such as which lender, which country or which years. Lending rules and applicants vary a lot between lenders and over time, so the model may not work as well on other data. Our test results come from a single 80/20 split with only 123 applicants with 38 rejections, so they’re uncertain, and a different split could give somewhat different numbers. Lastly, even though we dropped gender and marital status, other features like income or property area could still be correlated with them. Anyone using a model like this would need to check that it treats different groups fairly.</p>
 </section>
 <section id="discussion" class="level1">
 <h1>Discussion</h1>
-<div id="448292e3" class="cell" data-execution_count="18">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>train <span class="op">=</span> pd.read_csv(<span class="st">&#39;../data/raw/train.csv&#39;</span>)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>test <span class="op">=</span> pd.read_csv(<span class="st">&#39;../data/raw/test.csv&#39;</span>)</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>train.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="37">
-<div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">Loan_ID</th>
-<th data-quarto-table-cell-role="th">Gender</th>
-<th data-quarto-table-cell-role="th">Married</th>
-<th data-quarto-table-cell-role="th">Dependents</th>
-<th data-quarto-table-cell-role="th">Education</th>
-<th data-quarto-table-cell-role="th">Self_Employed</th>
-<th data-quarto-table-cell-role="th">ApplicantIncome</th>
-<th data-quarto-table-cell-role="th">CoapplicantIncome</th>
-<th data-quarto-table-cell-role="th">LoanAmount</th>
-<th data-quarto-table-cell-role="th">Loan_Amount_Term</th>
-<th data-quarto-table-cell-role="th">Credit_History</th>
-<th data-quarto-table-cell-role="th">Property_Area</th>
-<th data-quarto-table-cell-role="th">Loan_Status</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">0</th>
-<td>LP001002</td>
-<td>Male</td>
-<td>No</td>
-<td>0</td>
-<td>Graduate</td>
-<td>No</td>
-<td>5849</td>
-<td>0.0</td>
-<td>NaN</td>
-<td>360.0</td>
-<td>1.0</td>
-<td>Urban</td>
-<td>Y</td>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th">1</th>
-<td>LP001003</td>
-<td>Male</td>
-<td>Yes</td>
-<td>1</td>
-<td>Graduate</td>
-<td>No</td>
-<td>4583</td>
-<td>1508.0</td>
-<td>128.0</td>
-<td>360.0</td>
-<td>1.0</td>
-<td>Rural</td>
-<td>N</td>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">2</th>
-<td>LP001005</td>
-<td>Male</td>
-<td>Yes</td>
-<td>0</td>
-<td>Graduate</td>
-<td>Yes</td>
-<td>3000</td>
-<td>0.0</td>
-<td>66.0</td>
-<td>360.0</td>
-<td>1.0</td>
-<td>Urban</td>
-<td>Y</td>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th">3</th>
-<td>LP001006</td>
-<td>Male</td>
-<td>Yes</td>
-<td>0</td>
-<td>Not Graduate</td>
-<td>No</td>
-<td>2583</td>
-<td>2358.0</td>
-<td>120.0</td>
-<td>360.0</td>
-<td>1.0</td>
-<td>Urban</td>
-<td>Y</td>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">4</th>
-<td>LP001008</td>
-<td>Male</td>
-<td>No</td>
-<td>0</td>
-<td>Graduate</td>
-<td>No</td>
-<td>6000</td>
-<td>0.0</td>
-<td>141.0</td>
-<td>360.0</td>
-<td>1.0</td>
-<td>Urban</td>
-<td>Y</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div>
-<div id="7a469e43" class="cell" data-execution_count="19">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># python block for you</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<p>Based on the results of the data analysis, the trained model beats the baseline, but because it approves too many applicants who should be rejected, it isn’t ready for real lending use. There are a few things we could try next. We could raise the decision threshold above the default 0.5, or set <code>class_weight=&quot;balanced&quot;</code>, so the model rejects more often. This would cut down risky approvals, at the cost of turning away some good applicants. We could also tune the regularization strength <code>C</code>, which we left at its default. Finally, we could try models like random forest or gradient boosting, which can pick up interactions between features that logistic regression misses (Udbhav et al., 2022).</p>
+<p>There are also some limitations to keep in mind. The data set is small with 614 applications, and we don’t know much about where it comes from, such as which lender, which country or which years. Lending rules and applicants vary a lot between lenders and over time, so the model may not work as well on other data. Our test results come from a single 80/20 split with only 123 applicants with 38 rejections, so they’re uncertain, and a different split could give somewhat different numbers. Lastly, even though we dropped gender and marital status, other features like income or property area could still be correlated with them. Anyone using a model like this would need to check that it treats different groups fairly.</p>
+<p>With more training data and additional research time, further studies could delve deeper into the data and look into customer segmentation, which involves splitting customers into groups based on similar traits (Business Development Bank of Canada, 2025), to determine which segments have the highest approval ratings. Another potential path for future research could be to gather larger, more detailed datasets with additional features such as interest rate, current assets, and current debt to determine whether they can further improve the model’s performance.</p>
 </section>
 <section id="references" class="level1">
 <h1>References</h1>
@@ -2955,6 +2839,9 @@ Figure 3: Coefficients of the final logistic regression model. Positive values 
 </div>
 <div class="hanging-indent">
 <p>BDC. (2025, March 7). What is customer segmentation?. Business Development Bank of Canada (BDC). https://www.bdc.ca/en/articles-tools/entrepreneur-toolkit/templates-business-guides/glossary/segmentation</p>
+</div>
+<div class="hanging-indent">
+<p>Udbhav, M., Kumar, R., Kumar, N., Kumar, R., Vijarania, Dr. M., &amp; Gupta, S. (2022). Prediction of Home Loan Status Eligibility Using Machine Learning. https://doi.org/10.2139/ssrn.4121038</p>
 </div>
 </section>
 

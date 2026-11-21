@@ -270,54 +270,14 @@ plt.tight_layout()
 plt.show()
 ```
 
-The model beats the baseline, but because it approves too many applicants who should be rejected, it isn't ready for real lending use. There are a few things we could try next. We could raise the decision threshold above the default 0.5, or set `class_weight="balanced"`, so the model rejects more often. This would cut down risky approvals, at the cost of turning away some good applicants. We could also tune the regularization strength `C`, which we left at its default. Finally, we could try models like random forest or gradient boosting, which can pick up interactions between features that logistic regression misses.
-
-There are also some limitations to keep in mind. The data set is small with 614 applications, and we don't know much about where it comes from, such as which lender, which country or which years. Lending rules and applicants vary a lot between lenders and over time, so the model may not work as well on other data. Our test results come from a single 80/20 split with only 123 applicants with 38 rejections, so they're uncertain, and a different split could give somewhat different numbers. Lastly, even though we dropped gender and marital status, other features like income or property area could still be correlated with them. Anyone using a model like this would need to check that it treats different groups fairly.
-
 
 # Discussion
 
-```{python}
-train = pd.read_csv('../data/raw/train.csv')
-test = pd.read_csv('../data/raw/test.csv')
-train.head()
-```
+Based on the results of the data analysis, the trained model beats the baseline, but because it approves too many applicants who should be rejected, it isn't ready for real lending use. There are a few things we could try next. We could raise the decision threshold above the default 0.5, or set `class_weight="balanced"`, so the model rejects more often. This would cut down risky approvals, at the cost of turning away some good applicants. We could also tune the regularization strength `C`, which we left at its default. Finally, we could try models like random forest or gradient boosting, which can pick up interactions between features that logistic regression misses (Udbhav et al., 2022).
 
-```{python}
-# python block for you
-```
+There are also some limitations to keep in mind. The data set is small with 614 applications, and we don't know much about where it comes from, such as which lender, which country or which years. Lending rules and applicants vary a lot between lenders and over time, so the model may not work as well on other data. Our test results come from a single 80/20 split with only 123 applicants with 38 rejections, so they're uncertain, and a different split could give somewhat different numbers. Lastly, even though we dropped gender and marital status, other features like income or property area could still be correlated with them. Anyone using a model like this would need to check that it treats different groups fairly.
 
-
-```{python}
-
-```
-
-```{python}
-
-```
-
-```{python}
-
-```
-
-
-```{python}
-
-```
-
-```{python}
-
-```
-
-
-```{python}
-
-```
-
-```{python}
-
-```
-
+With more training data and additional research time, further studies could delve deeper into the data and look into customer segmentation, which involves splitting customers into groups based on similar traits (Business Development Bank of Canada, 2025), to determine which segments have the highest approval ratings. Another potential path for future research could be to gather larger, more detailed datasets with additional features such as interest rate, current assets, and current debt to determine whether they can further improve the model's performance.
 
 # References
 
@@ -332,4 +292,7 @@ Zhang, Zehao. (2024). An Application of Logistic Regression in Bank Lending Pred
 :::
 ::: {.hanging-indent}
 BDC. (2025, March 7). What is customer segmentation?. Business Development Bank of Canada (BDC). https://www.bdc.ca/en/articles-tools/entrepreneur-toolkit/templates-business-guides/glossary/segmentation  
+:::
+::: {.hanging-indent}
+Udbhav, M., Kumar, R., Kumar, N., Kumar, R., Vijarania, Dr. M., & Gupta, S. (2022). Prediction of Home Loan Status Eligibility Using Machine Learning. https://doi.org/10.2139/ssrn.4121038 
 :::
