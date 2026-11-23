@@ -1,7 +1,7 @@
 # Group 14 Milestone 1: Predicting Home Loan Approvals Given An Applicant Financial And Application Details
 **Authors**: Reina Cheng Hwai, Edmund Yong, and Joyce Lin
 
-**Link to the report:** [DSCI-522-Group-14-Loan-Approval-Classification](https://github.com/UBC-MDS-2026-27/DSCI-522-Group-14-Loan-Approval-Classification)
+**Link to the report:** [DSCI-522-Group-14-Loan-Approval-Classification](https://ubc-mds-2026-27.github.io/DSCI-522-Group-14-Loan-Approval-Classification/)
 
 ## Summary
 The goal of this data analysis project is to predict home loan approval outcomes using applicant information and evaluate the effectiveness of a machine learning classification model. Using the train.csv dataset from the [Finance Loan Approval Prediction Data]( https://www.kaggle.com/datasets/krishnaraj30/finance-loan-approval-prediction-data?select=train.csv) on Kaggle, we fit a logistic regression model and compare its performance against a majority-class baseline using accuracy, F1 score, and ROC AUC. Our findings show that logistic regression outperforms the baseline, but despite its relatively high overall accuracy, the model performs poorly at identifying rejected applications. This analysis highlights the importance of evaluating classification models beyond overall accuracy, particularly when working with imbalanced datasets, and suggests that further improvements are needed before such a model could be considered for real-world lending decisions.
