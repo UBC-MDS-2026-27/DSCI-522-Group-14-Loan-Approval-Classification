@@ -7,6 +7,7 @@ format:
   html:
     embed-resources: true
     toc: true
+    format-links: false
   # PDF via Typst, which comes with Quarto
   typst:
     # png figures for the PDF
