@@ -11,6 +11,65 @@ The goal of this data analysis project is to predict home loan approval outcomes
 The final report can be found
 [here](https://ubc-mds-2026-27.github.io/DSCI-522-Group-14-Loan-Approval-Classification/analysis/loan_classification_report.html).
 
+## Usage
+
+We run the analysis in a Docker container,
+so everyone uses the same software and package versions.
+The image is published on Docker Hub at
+[skysheng7/dsci_522_project-template-breast-cancer-predictor](https://hub.docker.com/r/skysheng7/dsci_522_project-template-breast-cancer-predictor).
+
+### Setup
+
+First time running the project,
+install and launch [Docker](https://www.docker.com/get-started/),
+then clone this repository and move into it:
+
+``` bash
+git clone https://github.com/UBC-MDS/DSCI_522_project-template-breast-cancer-predictor.git
+cd DSCI_522_project-template-breast-cancer-predictor
+```
+
+Run all the commands below from the root of this repository.
+
+### 1. Make an ssh key
+
+If you don't have an ssh key yet, make one
+and press Enter at each question:
+
+``` bash
+ssh-keygen -t ed25519
+```
+
+The container lets you log in with this key.
+If you skip this step, Docker makes a *folder* named `~/.ssh/id_ed25519.pub` instead,
+and connecting to the container over ssh fails
+until you delete that folder and make the key.
+
+### 2. Download the image
+
+``` bash
+docker compose pull
+```
+
+### 3. Run the analysis and render the report
+
+``` bash
+docker compose run --rm analysis-env uv run quarto render
+```
+The container stops with `--rm`; it is removed by itself when the render finishes.
+
+Rendering runs the whole analysis from scratch:
+it downloads the data again from the UCI Machine Learning Repository
+(so you need an internet connection),
+and overwrites the files in `data/raw/` and `data/processed/`.
+The rendered report is written to
+`reports/breast_cancer_predictor_report.html` and
+`reports/breast_cancer_predictor_report.pdf`,
+replacing the versions in this repository.
+Because of `--rm`, the container is removed by itself
+when the render finishes, so there is nothing to stop afterwards.
+
+
 ## How to Run the Analysis
 ### 1. Clone the repository
 Run the following commands in a Git Bash terminal:
@@ -73,6 +132,10 @@ Python package dependencies are listed in pyproject.toml, with resolved versions
 ## Licenses
  This software is dual-licensed under the MIT License and the CC BY-NC-ND 4.0 License
 
+## Contributing
+
+Want to change the analysis, add a package, or update the published report?
+See [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 ## AI Use Statement
 Generative AI tools, such as ChatGPT and Claude, were used in this project. AI usage is disclosed in all documents that had assistance. Examples of AI usage include debugging code, answering basic programming questions, asking general concepts, and  proofreading written work.
