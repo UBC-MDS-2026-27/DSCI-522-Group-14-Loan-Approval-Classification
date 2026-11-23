@@ -9,7 +9,7 @@ The goal of this data analysis project is to predict home loan approval outcomes
 ## Report
 
 The final report can be found
-[here](https://ubc-mds-2026-27.github.io/DSCI-522-Group-14-Loan-Approval-Classification/analysis/loan_classification_report.html).
+[here](https://ubc-mds-2026-27.github.io/DSCI-522-Group-14-Loan-Approval-Classification/).
 
 ## Usage
 
